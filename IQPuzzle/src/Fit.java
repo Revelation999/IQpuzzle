@@ -1,9 +1,9 @@
 import java.util.ArrayList;
 public class Fit
 	{
-		public static boolean[] tryFit(Hole[][] matrix, Bead Bead1)
+		public static ArrayList <Memory> tryFit(Hole[][] matrix, Bead Bead1)
 		{
-			ArrayList <Memory> placesToFit = new ArrayList <.>;
+			ArrayList <Memory> placesToFit = new ArrayList <Memory>();
 			boolean canFit[] = new boolean[8];
 			for (int r = 0; r < matrix.length; r++)
 			{
@@ -52,19 +52,42 @@ public class Fit
 										canFit[7] = (matrix[r+Bead1.getRotate3flip1()[i][0]][c+Bead1.getRotate3flip1()[i][1]].getColor().equals("o"));
 									}
 							}
+						placesToFit.add(new Memory(canFit, r, c));
 					}
 			}
 			
-			return canFit;
+			return placesToFit;
 		}
 		public static Hole[][] putIn(Hole[][] matrix,Bead Bead1,Bead Bead2)
 		{
-			boolean bead1CanFit[] = tryFit(matrix, Bead1);
-			//boolean bead2CanFit[] = tryFit(matrix, Bead2);
-			for (int i = 0; i < bead1CanFit.length; i++)
+			ArrayList <Memory> bead1Place = tryFit(matrix, Bead1);
+			Memory fitPosition = null;
+			boolean canBreak = false;
+			for (int r = 0; r < matrix.length; r++)
 				{
-					if (bead1CanFit[i])
+					for (int c = 0; c < matrix[0].length; c++)
 						{
+							if (matrix[r][c].getColor().equals("o"))
+								{
+									for (int i = 0; i < bead1Place.size(); i++)
+										{
+											if (bead1Place.get(i).getRow() == r && bead1Place.get(i).getCol() == c)
+												{
+													fitPosition = bead1Place.get(i);
+													canBreak = true;
+													break;
+												}
+										}
+								}
+							if (canBreak){break;}
+						}
+					if (canBreak){break;}
+				}
+			for (int i = 0; i < fitPosition.getCanFit().length; i++)
+				{
+					if (fitPosition.getCanFit()[i])
+						{
+							matrix[fitPosition.getRow()][fitPosition.getCol()].setColor(Bead1.getColor());
 							for (int j = 0; j < Bead1.getRotate0flip0().length; j++)
 								{
 									
