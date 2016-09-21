@@ -4,6 +4,12 @@ public class Hole
 		private String color;
 		private int filled;
 		private double random;
+		public Hole (String c, int f, double r)
+			{
+				color = c;
+				filled = f;
+				random = r;
+			}
 		public String getColor()
 			{
 				return color;
@@ -20,12 +26,7 @@ public class Hole
 			{
 				this.random = random;
 			}
-		public Hole (String c, int f, double r)
-		{
-			color = c;
-			filled = f;
-			random = r;
-		}
+		
 		public int getFilled()
 			{
 				return filled;

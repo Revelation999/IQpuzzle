@@ -8,7 +8,7 @@ public class Generate
 				{
 					for (int c = 0; c < 10; c++)
 						{
-							matrix[r][c] = (r+c<10&&r+c>=6)?new Hole("o", 0, Math.random()):new Hole(" ", 1, Math.random());
+							matrix[r][c] = (r+c<10 && r+c>=6)?new Hole("o", 0, Math.random()):new Hole(" ", 1, Math.random());
 						}
 				}
 			return matrix;
