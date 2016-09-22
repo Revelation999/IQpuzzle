@@ -63,17 +63,17 @@ public class Fit
 			ArrayList <Memory> bead1Place = tryFit(matrix, Bead1);
 			Memory fitPosition = null;
 			boolean canBreak = false;
-			for (int r = 0; r < matrix.length; r++)
+			for (int i = 0; i < matrix.length; i++)
 				{
-					for (int c = 0; c < matrix[0].length; c++)
+					for (int x = 0; x < matrix[0].length; x++)
 						{
-							if (matrix[r][c].getColor().equals("o"))
+							if (matrix[i][x].getColor().equals("o"))
 								{
-									for (int i = 0; i < bead1Place.size(); i++)
+									for (int j = 0; j < bead1Place.size(); j++)
 										{
-											if (bead1Place.get(i).getRow() == r && bead1Place.get(i).getCol() == c)
+											if (bead1Place.get(j).getRow() == i && bead1Place.get(j).getCol() == x)
 												{
-													fitPosition = bead1Place.get(i);
+													fitPosition = bead1Place.get(j);
 													canBreak = true;
 													break;
 												}
