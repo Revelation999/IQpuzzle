@@ -4,11 +4,11 @@ public class Generate
 		public static Hole[][] Matrix()
 		{
 			Hole matrix[][] = new Hole[10][10];
-			for (int r = 0; r < 10; r++)
+			for (int i = 0; i < 10; i++)
 				{
-					for (int c = 0; c < 10; c++)
+					for (int x = 0; x < 10; x++)
 						{
-							matrix[r][c] = (r+c<10&&r+c>=6)?new Hole("o", 0, Math.random()):new Hole(" ", 1, Math.random());
+							matrix[i][x] = (i+x<10 && i+x>=6)?new Hole("o", 0, Math.random()):new Hole(" ", 1, Math.random());
 						}
 				}
 			return matrix;
